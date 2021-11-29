@@ -9,7 +9,7 @@
 filesystems are simply different ways of organizing and storing 
 files on a hard drive, flash drive, or any other storage device.
 
-*types of filesystem
+## Types of filesystem
 
 FAT32: support individual files up to 4GB, and vollumes up to 2TB, doesnt suppor file permission,
 file system corruption can happen much more easily
@@ -24,33 +24,49 @@ uses inodes (index nodes) to describe files and objects
 
 
 
-# Linux Filesystem Hierarchy
+## Linux Filesystem Hierarchy
 
 -The root ‘/’ directory: top-level directory of the filesystem, contains all files required to boot system, contains all
+
 -exeutables and libaries required to boot remaining filesystem
+
 -The tmp ‘/tmp’ directory: contains temporary files created by system and users
+
 -The home ‘/home’ directory: store files of users
+
 -The usr ‘/usr’ directory: contains binaries, libraries and source code for programs of user space
+
 -/usr/bin contains binary files for user programs. 
+
 -/usr/sbin contains binary files for system administrators. 
+
 -/usr/lib contains libraries for /usr/bin and /usr/sbin. 
+
 -/usr/local contains users programs that installed from source.
+
 -The etc ‘/etc’ directory: contain core system files like startup and shutdown shell scripts
+
 -The var ‘/var’ directory: Content of the files that are expected to grow can be found under this directory.
+
 -The sbin ‘/sbin’ directory: contains binary executable and linux commands
 
 
-# Navigating through the filesystem
+## Navigating through the filesystem
 
 (~) symbol stands for your home directory
+
 cd (change directory)
+
 pwd (print working dircetory)
+
 ls (list)
+
 The ‘.’ link refers to the directory itself.
+
 The ‘..’ link refers to the directory before it (parent directory)
 
 
-# Relative and absolute paths
+## Relative and absolute paths
 absolute Path:The total path leading to the directory.
 relative Path: The path relative to the working directory.
 
