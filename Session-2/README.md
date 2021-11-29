@@ -5,16 +5,19 @@
 
 # Filesystems
 
-*What is a filesystem?
+##What is a filesystem?
 filesystems are simply different ways of organizing and storing 
 files on a hard drive, flash drive, or any other storage device.
 
 *types of filesystem
+
 FAT32: support individual files up to 4GB, and vollumes up to 2TB, doesnt suppor file permission,
 file system corruption can happen much more easily
+
 NTFS:the modern file system Windows likes to use by default, supports file permissions for security, 
 a change journal that can help quickly recover errors if your computer crashes, shadow copies for backups,
 encryption, disk quota limits, hard links, No realistic file size or partition size limits.
+
 Ext4: a standard root/tree file system, with a boot sector, partition table, and like the Unix File System, 
 uses inodes (index nodes) to describe files and objects
 
