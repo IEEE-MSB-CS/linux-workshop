@@ -1,5 +1,6 @@
 # Session 5
 
+<hr>
 ## Contents
 
 - core concepts:
@@ -350,11 +351,87 @@ meska@root env | grep MY
 where is the variables I've declared?
 The reason for this, as the script runs on shell instance differ from the one we executing the other command
 
+# Command substituion
+
+remember when we assign a variable type to be the day we run the script on!?
+we substitue the output of the command date into the variable STARTOFDAY
+
+we can use command substituion using \`\` [backticks]
+
+Run common_substituion.sh inside script folder
+
+```bash
+#!/bin/bash
+# This script is intended to show how to do simple substitution
+
+TODAYSDATE=`date`
+USERFILES=`find /home -user yousef`
+
+echo "Today's Date: $TODAYSDATE"
+echo "All files owned by USER: $USERFILES"
+```
+
+\*\* by default aliases are not expand on sub-shells
+
+> what is shopt?
+
+# Exit status
+
+we are talking about the status of particular command or shell script
+
+there are two primary status when we exit command or when we exit a shell script, either returning 0 (sucess) or not-zero (failure )
+
+## knowing the last exit status
+
+```bash
+meska@root echo $?
+            # 0 (sucess)
+```
+
+have a loot at exit-status.sh
+
+```bash
+#!/bin/bash
+# This script in intended to show exit status types
+
+set -e
+expr 1 + 5
+echo $?
+
+rm doodle.sh # (not already exit)
+echo $?
+
+expr 10 + 10
+echo $?
+```
+
+\*\* set -e -> exit the script once you see an error
+
 # Comments
 
 Comments can help you fasten your scripting skills and make others understand your code.
 
 In Bash we use the HASH symobl **#** to make commendts
+
+# Arithmetic Operations
+
+```bash
+meska@root expr 2 + 2
+            4
+meska@root expr 2+2
+            2+2
+meska@root expr 10 * 8
+          expr: syntax error (* is a wild card, escape it)
+meska@root expr 10 \* 8
+           80
+meska@root echo `expr 4 - 2`
+          2
+meska@roor expr \( 2 + 2 \) \* 4
+
+
+```
+
+# Local and Global Enviroment
 
 ```bash
 #!/bin/bash
