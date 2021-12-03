@@ -446,27 +446,47 @@ DATETIMESTAMP=`date`
 echo "This is when the script was run: $DATETIMESTAMP" # this is the timestamp of run
 ```
 
-# Task1: Extract Subdomains
+# Bash: Tasks
 
-You've given a website to extract the subdomain for it, make a script to automate this opertion
+## tips
+
+[1] start simple by breaking the script into individual tasks, do each one on it's own and combine them together
+[2] try to see what you can remove and substitute to improve the performance of the script.
+
+## Task1: Extract Subdomains
+
+You've given a website to extract the subdomains on it's index page and the ip addresses of them, make a script to automate this opertion
 
 <details>
 <summary>Solution</summary>
 
 ```bash
 wget cisco.com
-cat index.html | grep 'href=' index.html | cut -d '/' -f 3 | grep '\.' | cut -d '"' -f 1 | sort -u
+cat index.html | grep 'href=' index.html | cut -d '/' -f 3 | grep '\.' | cut -d '"' -f 1 | sort -u | grep "has address" | cut -d " " -f4
+
+```
+
+or
+
+```bash
+grep -o '[A-Za-z0-9_\.-]*\.*cisco.com' index.html | sort -u
+```
+
+or we can make a script to automate this process
+
+```bash
+for url in $(cat cisco.txt); do
+host $url  | grep "has address" | cut -d " " -f4
+done;
+```
+
+or
+
+```bash
+for url in $(grep -o -i '[A-Za-z0-9_\.-]*\.cisco.com' index.html | sort -u); do host $url | grep "has address" | cut -d " " -f4; done
 ```
 
 </details>
-
-if we have to do this operation over and over?
-so bash comes into play
-extractSubDomains.sh
-
-```bash
-
-```
 
 ## Task 2: LogForensic
 
@@ -481,8 +501,10 @@ cat access.log.1 | grep "127.0.1" | cut -d '"' -f 2 | sort | uniq -c | sort -n
 
 ## Task3: LiveHosts
 
-how to know the live machines on your network?
+In this case we are told to ping ip range and inform us which ip address respond to our ICMP request (ping sweeper)
 
+<details>
+<summary>Solution</summary>
 ```bash
 ping -c 1 127.0.0.1 | grep "bytes from" | cut -d " " -f 4 | cut -d ":" -f 1
 ```
@@ -492,6 +514,8 @@ pingSweep.sh
 ```bash
 for i in {1..254}; do ping -c 192.168.1.$i | grep "bytes from" | cut -d " " -f 4 | cut -d ":" -f 1 done;
 ```
+
+</details>
 
 ## Essential Tools:
 
