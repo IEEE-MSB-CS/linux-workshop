@@ -6,7 +6,7 @@ An introduction and a brief history to Linux
 Operating Systems
 most important software that runs on a computer, manages all of the software and hardware on the computer.
 
-#OS Layers
+## OS Layers
 
 Hardware: This layer interacts with the system hardware and coordinates with all the peripheral devices, it the lowest layer in the layered operating system architecture.
 
@@ -17,7 +17,7 @@ The Shell: An interface to kernel, hiding complexity of kernel’s functions fro
 GUI: allow the user to interact with the system by using a graphical interface
 
 
-#Boot Process
+## Boot Process
 The boot process consists of many layers executing each other to load the operating system finally.
 
 BIOS/UEFI: Checks that the system is working properly and then executes the MBR/EFI.
@@ -30,13 +30,13 @@ Kernel: Executes the /sbin/init program.
 
 init: Executes the runlevel programs
 
-#Open Source and Linux History
+## Open Source and Linux History
 
 (1965)Bell labs create Multics, (1969)Ken Thompson and Dennis Ritchie needed an OS to play space travel on another small machine,
 (1969)Unix was developed,(1980)almost all software was proprietary, which means that it had owners who forbid and prevent cooperation by users,
 (1983)The GNU project was first announced by Richard Stallman, (1987)MINIX a popular Unix-like operating system popped up, (1991) Linus Torvalds introduced Linux
 
-#Linux Distribution Families
+## Linux Distribution Families
 Since Linux and GNU are both open source, many people from different communities have made different Linux Distributions.
 There are too many distributions to count, so we’ll talk about the three main families:
 
@@ -47,7 +47,7 @@ The Debian family started with the home user in mind, the community wanted to ma
 3.Other distributions built for specific use cases**
 Distributions such as Arch Linux, openSUSE, SLES, Gentoo, and many others were made for specific use cases or optimisations based on what the community wanted.
 
-#What is special about Linux?
+## What is special about Linux?
 
 1.Open Source Nature
 Linux is completely an open source project. You can have a look at the source code of a Linux OS.
@@ -71,17 +71,17 @@ Linux distributions do not collect much data (or none). Moreover, you will not b
 Linux systems are known for consuming fewer system resources (RAM, disk space, etc.)
 
 
-#Installation of Kali linux on virtual machine
+### Installation of Kali linux on virtual machine
 
-#shell
+### shell
 command line interpreter, translates the command written by user
 types of shell: sh, bash, csh, ksh, z
 
-#terminal
+### terminal
 enviroment where commands could be written
 open terminal by Ctrl+Alt+T, Ctrl+Alt+N	
 
-#command line
+### command line
 an are to the right of command prompt where commandsare entered
 
 
