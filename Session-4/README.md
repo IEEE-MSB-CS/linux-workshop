@@ -1,22 +1,33 @@
 # Session 4
 
-The Difference between Local and Public IP addresses
-IP address allocation(Static, DHCP)
-Data Packets
-Gateways
-Network Address Classes
-Domain Name Systems(DNS)
-Open Systems Interconnection(OSI) Model
-TCP/IP Stack
-SSH
-SCP
-Network Configuration
-Ping
-Traceroute
-NSLOOKUP
-Network Configuration File
+- The Difference between Local and Public IP addresses
+- IP address allocation(Static, DHCP)
+- Data Packets
+- Gateways
+- Network Address Classes
+- Domain Name Systems(DNS)
+- Open Systems Interconnection(OSI) Model
+- TCP/IP Stack
+- SSH
+- SCP
+- Network Configuration
+- Ping
+- Traceroute
+- NSLOOKUP
+- Network Configuration File
 
-# Capturing the traffic
+## VPN
+
+VPN stands for (Virtual Private Network), this type of network allows for secure data to be transmitted from one point to another (ex, from your machine to webserver or from machine to other machine privately)
+You typically travel through another machine using the connection of that machine [hide the original ip address that is coming from]
+
+- Why is it used?
+- Can hide your actions from the orignial IP
+- Securley connect one office to another
+- Hides an attackers source
+- Bypass IP Blocks
+
+## Capturing the traffic
 
 We have so many tool to capture the traffic, but we will discuss the most important tools [GUI, command line].
 
@@ -24,7 +35,7 @@ We have so many tool to capture the traffic, but we will discuss the most import
 - tcpdump [Command line]
 -
 
-## Wireshark
+### Wireshark
 
 start as sudo user
 
@@ -35,7 +46,7 @@ start as sudo user
 in terminal
 route -n -> routing table
 
-## tcpdump
+### tcpdump
 
 - tcpdump -nn -X -v -s0 -i wlo1
   (-nn) to prevent resolving
@@ -59,4 +70,4 @@ tcpdump -nn -r ftp.pcap
 tcpick is more verbous
 tcpick -C -yP -r ftbTcpdump.pcapng
 
-Task
+## Task

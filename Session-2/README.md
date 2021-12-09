@@ -1,8 +1,8 @@
 # Session 2
 
-# The Command Line & The Linux Filesystem Hierarchy
+## The Command Line & The Linux Filesystem Hierarchy
 
-# Filesystems
+## Filesystems
 
 ## What is a filesystem?
 
@@ -23,27 +23,27 @@ uses inodes (index nodes) to describe files and objects
 
 # Linux Filesystem Hierarchy
 
--The root **‘/’** directory: top-level directory of the filesystem, contains all files required to boot system, contains all exeutables and libaries required to boot remaining filesystem
+- The root **‘/’** directory: top-level directory of the filesystem, contains all files required to boot system, contains all exeutables and libaries required to boot remaining filesystem
 
--The tmp **‘/tmp’** directory: contains temporary files created by system and users
+- The tmp **‘/tmp’** directory: contains temporary files created by system and users
 
--The home **‘/home’** directory: store files of users
+- The home **‘/home’** directory: store files of users
 
--The usr **‘/usr’** directory: contains binaries, libraries and source code for programs of user space
+- The usr **‘/usr’** directory: contains binaries, libraries and source code for programs of user space
 
--/usr/bin contains binary files for user programs.
+- /usr/bin contains binary files for user programs.
 
--/usr/sbin contains binary files for system administrators.
+- /usr/sbin contains binary files for system administrators.
 
--/usr/lib contains libraries for /usr/bin and /usr/sbin.
+- /usr/lib contains libraries for /usr/bin and /usr/sbin.
 
--/usr/local contains users programs that installed from source.
+- /usr/local contains users programs that installed from source.
 
--The etc **‘/etc’** directory: contain core system files like startup and shutdown shell scripts
+- The etc **‘/etc’** directory: contain core system files like startup and shutdown shell scripts
 
--The var **‘/var’** directory: Content of the files that are expected to grow can be found under this directory.
+- The var **‘/var’** directory: Content of the files that are expected to grow can be found under this directory.
 
--The sbin **‘/sbin’** directory: contains binary executable and linux commands
+- The sbin **‘/sbin’** directory: contains binary executable and linux commands
 
 # Navigating through the filesystem
 
@@ -177,9 +177,9 @@ $sudo apt-get update
 
 $sudo apt install nano
 
-# useful commands
+## useful commands
 
-## cat
+### cat
 
 commonly known usages is to print the content of a file onto the standard output stream, also allows us to write some texts into a file.
 
@@ -189,14 +189,10 @@ $cat > file **(creating new file and typing in it)**
 
 $cat **(listing to standered output)**
 
-## grep
+### grep
 
 to search in files
 
 $grep string-to-match file
 
-# task
-
-```
-
-```
+### task
