@@ -1,15 +1,19 @@
-# Session 5
+# Session 5 - Bash
 
-<hr>
+In this session we're going to explore bash scripting and dive
+
+> go away or i will replace you with a shell script!
+> give me six hours to chopp down a tree and I will spend the first four shaprning the axe
+
 ## Contents
 
 - core concepts:
-- Bash Enviroment
-- core bash configuration files
-- bash enviroment variables
-- what makes a file a bash script?
-- exit codes and return status
-- pipes and redirects
+  - Bash Enviroment
+  - core bash configuration files
+  - bash enviroment variables
+  - what makes a file a bash script?
+  - exit codes and return status
+  - pipes and redirects
 - Signals
 - Foreground and background
 - scriptings:
@@ -30,7 +34,7 @@
   - special structrues (&&, ||, {}, etc);
   - how to math
   - Handling errors within a script
-  - Advanced I/O (IPC, signals, interactive user inut, redirection, file handles)
+  - Advanced I/O (IPC, signals, interactive user input, redirection, file handles)
   - Advanced find
   - External Dependecies (sourcing external filem libraries, etc)
   - Date and time(timezones, formatiing, adding stamps to file)
@@ -43,9 +47,9 @@
   - LogForeniscs
   - Automate Networking Scanning
 
-# Brief History
+## Brief History
 
-## What is the Shell?
+### What is the Shell?
 
 the shell is the first layer that a user can use to interact with the
 operating system.
@@ -62,7 +66,7 @@ the problem with this approach is you have to exit the GUI everytime you need to
 
 that' why we have terminals.
 
-## Different ways to access terminal
+### Different ways to access terminal
 
 - CTRL + ALT + T
 - ALT + F2 then type the name of the terminal ("gnome-terminal", "tilix", etc);
@@ -78,7 +82,7 @@ it give you a way to interactive with the file system
 
 Many of the things we have come to expect from Bash, were added after the inital shell's development
 
-in 1977, the Bourne shell was introduced having been created by Stephen Bounse while at Bell Labs for V7 Unix
+In 1977, the Bourne shell was introduced having been created by Stephen Bounse while at Bell Labs for V7 Unix
 The Bournse shell iteself was written with one of the main goals begin to support interactive execution of commands for the OS, thuse scripting was born
 the Bourne Shell introduced more advanced concepts into the shell and scripting capabilites such as control structures (if, while, case, etc..) as well as singlal handling and command subsitituon
 
@@ -92,7 +96,7 @@ Bash does full backward compatability with the previouse Bournse shell and also 
 
 Bash provides the ability to define functions, include regular expression and associative arrays
 
-## Pros and Cons of using BASH
+### Pros and Cons of using BASH
 
 - **Pros**
 - **Process Files**
@@ -107,9 +111,7 @@ Bash provides the ability to define functions, include regular expression and as
   - Use Linux commands inside programs
   - Controlling the workflow of your system and commands.
 
-## Cautions
-
-# _CAUTION!_
+### _CAUTION!_
 
 - Never run a Linux command unless you know what it does.
 - Take care if a command has a -f command as an option, it could mean **by force**.
@@ -201,7 +203,7 @@ unless you logout
 
 as you see, both .bash_profile and .bashrc tends to call eachother
 
-## Bash history
+### Bash history
 
 .bash_histroy
 contains what you type as the current user
@@ -225,7 +227,7 @@ so I put spave before writing the command, it not be captured on the bash histor
 
 search more about HISTCONTROL.
 
-## Bash logout
+### Bash logout
 
 .bash_logout
 the last the thing that happends you issue the exit or logout command
@@ -272,7 +274,7 @@ echo "Welcome"
 
 .sh is for visually easily know this is shell script.
 
-# Using Enviroment Variables
+## Using Enviroment Variables
 
 enviroment variables are designated by $CAPITAL_CASE_CONVENTION
 
@@ -289,7 +291,7 @@ echo
 echo "Your home directory is: $LOGIN"
 ```
 
-# Using Variables on the Command line
+## Using Variables on the Command line
 
 We will look first on how to use variables on command line, then we will see how to so on bash
 
@@ -316,7 +318,7 @@ meska@root echo $TODAYSDATE
 
 \*\* If your command is a real-time command like (date), you should export it everytime you need to use it because if we don't do so, it will show the first time we exported
 
-# Setting and using variables in scripts
+## Setting and using variables in scripts
 
 ```bash
 #!/bin/bash
@@ -351,7 +353,16 @@ meska@root env | grep MY
 where is the variables I've declared?
 The reason for this, as the script runs on shell instance differ from the one we executing the other command
 
-# Command substituion
+- readonly and unset:
+  readonly variable can't be unset
+
+````bash
+name="meska"
+readonly name;
+unset name;
+echo $name
+
+## Command substituion
 
 remember when we assign a variable type to be the day we run the script on!?
 we substitue the output of the command date into the variable STARTOFDAY
@@ -369,13 +380,13 @@ USERFILES=`find /home -user yousef`
 
 echo "Today's Date: $TODAYSDATE"
 echo "All files owned by USER: $USERFILES"
-```
+````
 
 \*\* by default aliases are not expand on sub-shells
 
 > what is shopt?
 
-# Exit status
+## Exit status
 
 we are talking about the status of particular command or shell script
 
@@ -407,13 +418,21 @@ echo $?
 
 \*\* set -e -> exit the script once you see an error
 
-# Comments
+## Comments
 
 Comments can help you fasten your scripting skills and make others understand your code.
 
-In Bash we use the HASH symobl **#** to make commendts
+- Single line
+  In Bash we use the HASH symobl **#** to make commendts
+- Multi-line
 
-# Arithmetic Operations
+```bash
+<<Comment
+this is a comment
+Comment
+```
+
+## Arithmetic Operations
 
 ```bash
 meska@root expr 2 + 2
@@ -431,7 +450,50 @@ meska@roor expr \( 2 + 2 \) \* 4
 
 ```
 
-# Local and Global Enviroment
+I can use
+
+```bash
+echo $((2 + 2))
+```
+
+## Local and Global Enviroment
+
+One of the common utility to see the enviroment list:
+
+- `printenv`
+- `env`
+- `set` -> to see the enviroment varaible for the 'current' running shell (specific the current session)
+  Let's say you want to know the logname of the system
+
+```bash
+meska@root env | grep LOGNAME
+# or
+meska@root printenv | grep LOGNAME
+```
+
+## Special Characters - Quotes and Escape
+
+Escaping Characters: used to remove the special meaning of other characters
+
+- `\`
+
+```bash
+echo "\$COL"
+#output $COL
+```
+
+- `''`
+
+```bash
+echo '$COL'
+#output -> $COL
+```
+
+- ``
+
+```bash
+echo "`date`" == echo `date`
+```
 
 ```bash
 #!/bin/bash
@@ -446,14 +508,171 @@ DATETIMESTAMP=`date`
 echo "This is when the script was run: $DATETIMESTAMP" # this is the timestamp of run
 ```
 
-# Bash: Tasks
+## Using /dev/null (device) [the Black Hole of your system]
+
+A great way to redirect your output to a device that simply ignores whatever the output was
+This approach is used heavily when dealing with CRON jobs (more on that later)
+
+look at the null.sh script
+
+```bash
+meska@root ./null.sh
+# This output will be displayed to the console
+```
+
+## The Read Statement
+
+Now the time to take information from the user :D and play with it
+
+```bash
+#!/bin/bash
+# interactive script for user input
+echo "Enter your first name: "
+read FIRSTNAME
+echo "Enter your Last Name: "
+read LASTNAME
+echo ""
+echo "Hello $FIRSTNAME $LASTNAME"
+echo "Enter your age: "
+read USERAGE
+echo "In 10 Years, you will be `expr $USERAGE + 10` years old."
+```
+
+We are building concept over concept, so for now we are not going to make exception handling (comes later);
+
+## Shell Expansion
+
+It's the ability to use shortcuts (brackets, etc) to take shortcuts for how we get information.
+
+```bash
+meska@root echo sh{ot, ort, oot}
+# shot short shoot
+meska@root echo sh{il, al}l
+# still stall
+
+```
+
+- `~`
+- `~+` (the current directly), `~-` (the previous one)
+  let's say I want to add a new path to the PATH env
+
+```bash
+meska@root echo ~
+# /home/meska
+meska@root export NEWPATH=$PATH:~
+```
+
+- `!`
+
+```bash
+meska@root echo "${!HO*}"
+# HOME HOSTNAME HOSTTYPE
+```
+
+- `:=` (to set and echo at the same time)
+
+```bash
+meska@root echo "${VARNAME:=something}"
+# something
+```
+
+- `[]` (evaluate expression)
+
+```bash
+meska@root echo $[2 * 2]
+# 4
+```
+
+- `$` the current process which bash runs on
+
+```bash
+echo $$
+72032
+ps aux | grep 72032
+```
+
+- `#` number of arugment
+- `*` and `@`
+- `!` the number of process runnin' on the background
+- `0` the name of the bash
+
+## Implicit VS explicit Definition
+
+## Arrays
+
+```bash
+MYARRAY=("First" "Second" "Third")
+echo $MYARRAY # printing the first index
+# First
+echo ${MYARRAY[2]} # printing based on index
+# Thrid
+echo ${MYARRAY[*]} # Printing everything
+# First Second Third
+MYARRAY[3]="Fourth"
+# what about using a delimeter?
+NEWARRAY=("First", "Second", "Third")
+echo $NEWARRAY
+# "First", "Second", "Third"
+```
+
+Look at simple_array.sh
+
+\*\* note about arrays:
+Arrays in bash are dynamic, but with one exception (you can't decrease the size of the array once defined)
+
+## Passing Variables to Command line
+
+The argument passed is from ($1 -> $n) as long as they are delimeted by space, you can use them directly within your script or assign them to variable and then use those variable
+Try to run the command_line_passed_variables.sh script and pass "hello world" to it as argument valuefi
+fi
+fi
+
+```bash
+meska@root ./command_line_passed_variables.sh "hello world"
+# The following item was passed in to the script at run time hello world
+```
+
+## Branching
+
+look at simple_if.sh
+
+## Looping
+
+- for
+- while
+- case
+
+## Regular expressions
+
+## Functions
+
+```bash
+function print_info {
+  name=$1
+  age=$2
+
+  echo "your name is $name, your age is $age"
+
+}
+read -p "your name is: " name
+read -p "your age is: " age
+
+print_info $name $age
+
+function get_infor {
+  information=$1
+  echo $info
+}
+```
 
 ## tips
 
 [1] start simple by breaking the script into individual tasks, do each one on it's own and combine them together
 [2] try to see what you can remove and substitute to improve the performance of the script.
 
-## Task1: Extract Subdomains
+## Tasks
+
+### Task1: Extract Subdomains
 
 You've given a website to extract the subdomains on it's index page and the ip addresses of them, make a script to automate this opertion
 
@@ -488,7 +707,7 @@ for url in $(grep -o -i '[A-Za-z0-9_\.-]*\.cisco.com' index.html | sort -u); do 
 
 </details>
 
-## Task 2: LogForensic
+### Task 2: LogForensic
 
 Log files are used for tracking the behaviour of application (All kind of behaviour)
 so dealing with log files is an essential skill,
@@ -499,7 +718,7 @@ what is the difference between uniq and sort -u?
 cat access.log.1 | grep "127.0.1" | cut -d '"' -f 2 | sort | uniq -c | sort -n
 ```
 
-## Task3: LiveHosts
+### Task3: LiveHosts
 
 In this case we are told to ping ip range and inform us which ip address respond to our ICMP request (ping sweeper)
 
@@ -517,7 +736,7 @@ for i in {1..254}; do ping -c 192.168.1.$i | grep "bytes from" | cut -d " " -f 4
 
 </details>
 
-## Essential Tools:
+### Essential Tools:
 
 1-nc (our swiss army knife :D)
 2-ncat
@@ -529,3 +748,11 @@ for i in {1..254}; do ping -c 192.168.1.$i | grep "bytes from" | cut -d " " -f 4
 ```bash
 ## codes
 ```
+
+### Task0:
+
+- Solve ![hackerrank_bash_challenges](https://www.hackerrank.com/domains/shell)
+
+### Task1:
+
+Organize a directory
