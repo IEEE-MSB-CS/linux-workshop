@@ -736,7 +736,7 @@ for i in {1..254}; do ping -c 192.168.1.$i | grep "bytes from" | cut -d " " -f 4
 
 </details>
 
-### Essential Tools:
+### Essential Tools
 
 1-nc (our swiss army knife :D)
 2-ncat
@@ -749,10 +749,10 @@ for i in {1..254}; do ping -c 192.168.1.$i | grep "bytes from" | cut -d " " -f 4
 ## codes
 ```
 
-### Task0:
+### Task0
 
 - Solve ![hackerrank_bash_challenges](https://www.hackerrank.com/domains/shell)
 
-### Task1:
+### Task1
 
 Organize a directory
