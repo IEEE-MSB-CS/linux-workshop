@@ -642,6 +642,62 @@ look at simple_if.sh
 - while
 - case
 
+## Execution operators
+
+A way of controlling how our command or part of our script executes depending upon certain events
+
+- `||`
+- `&&`
+
+```bash
+meska@root rm superduper 2> /dev/null && echo "File exists and was removed" || echo "File does not exit and cannot be deleted"
+```
+
+look at execution_opertator.sh
+
+## Reading files
+
+reading files is a common task you will face from time to time.
+
+look at reading_file.txt
+
+- `-r` for reading line
+
+We will look at some more advanced error handling and reading non-binary file later on.
+
+## File Descriptors and Handles
+
+File descriptors are way for us to formally open and close a file, A numberic representation of file you want to read, or write, or read and write and how we can open this
+
+- `0` (standard input), `1` (standard output), `2` (standard error)
+
+you have to decide when reading the file, whether you're opening it for reading or writing or both using `exec` command and choosing a file handle
+
+- `>`
+- `<`
+- `<>`
+
+```bash
+exec <fileHandle>{<|>|<>}$FILE
+```
+
+## IFS and Delimiting (Does not work for me :"D)
+
+You should be comfartable dealing with delimited file.
+We have a special variable called `IFS`(internal field seperator) it helps bash reconginize fields or boundaries
+
+we have a file called `spacedelim.txt` that contain intended 3 spaces [fields]
+
+look at ifs_delimter.sh
+
+I can pass any delimter I want.
+
+for further reading: https://www.baeldung.com/linux/ifs-shell-variable
+
+## Traps and Singals
+
+Trap: command on bash give us the ability to look for the occurance of something( some type of event or command (something happining on the system)) and redirect how we react to it.
+
 ## Regular expressions
 
 ## Functions

@@ -15,6 +15,7 @@
 - Traceroute
 - NSLOOKUP
 - Network Configuration File
+- Firewalls
 
 ## VPN
 

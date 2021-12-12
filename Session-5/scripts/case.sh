@@ -22,3 +22,6 @@ case $MENUCHOICE in
     *)
         echo "You chose unwisely";;
 esac
+
+
+# read -s -p "Enter your name" name # -s (secure)
