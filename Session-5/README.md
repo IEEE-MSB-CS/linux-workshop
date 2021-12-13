@@ -5,6 +5,8 @@ In this session we're going to explore bash scripting and dive
 > go away or i will replace you with a shell script!
 > give me six hours to chopp down a tree and I will spend the first four shaprning the axe
 
+> knowing != experience
+
 ## Contents
 
 - core concepts:
@@ -698,9 +700,47 @@ for further reading: https://www.baeldung.com/linux/ifs-shell-variable
 
 Trap: command on bash give us the ability to look for the occurance of something( some type of event or command (something happining on the system)) and redirect how we react to it.
 
+- `trap`
+- `SIGINT` (CTRL+C)
+- `SIGTERM` (kill command);
+- `SIGTSTP` (Thread suspend);
+
+You can't capture a 'kill -9'
+
+For further reading
+
+look at trap_signals.sh
+
+## Debugging Your script
+
+## Error Handling
+
+Doing error handling is way more important, you MUST do error handling
+consider this script to know how important doing error handling
+
+```bash
+#!/bin/bash
+DIRECTORY=$1
+cd DIRECTORY
+rm *
+```
+
+if the user provided directory that does not exit, the script will fail changing to that directory, but still executing the `rm *` causing the deletion to be done on the current directory.
+
+look at error_handling.sh
+
 ## Regular expressions
 
 ## Functions
+
+- Function sytanx
+  look at simple_func.sh
+
+- Variable scope in function
+
+look at variable_scope.sh
+
+- Function with parameters
 
 ```bash
 function print_info {
@@ -715,16 +755,66 @@ read -p "your age is: " age
 
 print_info $name $age
 
-function get_infor {
+function get_info {
   information=$1
   echo $info
 }
 ```
 
+or we have a different syntax, but the same idea.
+
+```bash
+#!/bin/bash
+# this demo is for functional parameter passing
+
+# global variable
+USERNAME=$1
+
+# calculate age in days
+funcAgeInDays(){
+  echo "Hello $USERNAME, You are $1 Years old."
+  echo "That makes you approximately `expr $1 \* 365` days old"
+}
+
+clear
+echo "Enter your age"
+read USERAGE
+# calculate number of days
+funcAgeInDays $USERAGE
+```
+
+- Nested functions
+  Define your functions inside another function
+  look at nested_functions.sh
+
+**they are not used commonly**
+
+- Function with return and exit
+  look at func_with_return.sh
+
+## Using InfoBox
+
+This is the beginning of our GUI programming using BASH
+First thing we need to make is installing dialog package
+
+```bash
+sudo apt-get install dialog
+```
+
+look at infobox.sh
+
+- Display a message box for confirmation
+  it's a best practice to show a confirmation message to the user.
+  look at messageBox.sh
+
 ## tips
 
-[1] start simple by breaking the script into individual tasks, do each one on it's own and combine them together
-[2] try to see what you can remove and substitute to improve the performance of the script.
+1. start simple by breaking the script into individual tasks, do each one on it's own and combine them together
+2. try to see what you can remove and substitute to improve the performance of the script.
+
+3. divide the logic of your script into simple functions, each function is responsible for it's own work.
+4. provide comments for your script.
+5. use meaninful names for variables and function, also for the script itself
 
 ## Tasks
 
