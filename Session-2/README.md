@@ -2,11 +2,9 @@
 
 Tour guide to the Linux System.
 
-## The Command Line & The Linux Filesystem Hierarchy
-
 ## Filesystems
 
-## What is a filesystem?
+### What is a filesystem?
 
 filesystems are simply different ways of organizing and storing
 files on a hard drive, flash drive, or any other storage device.
@@ -23,49 +21,11 @@ files on a hard drive, flash drive, or any other storage device.
 - **Ext4**: a standard root/tree file system, with a boot sector, partition table, and like the Unix File System,
   uses inodes (index nodes) to describe files and objects
 
-## Linux Filesystem Hierarchy
+- file-system in linux is divided to **Meta-data** and **data**. 
 
-- The root **‘/’** directory: top-level directory of the filesystem, contains all files required to boot system, contains all exeutables and libaries required to boot remaining filesystem
+- **Meta-data** is stored in **inode** and **dentry**. **Inode** has a unique number for each file. **Inode** contains information about the file size, owner, permissions, dat of creation and pointers to data blocks. 
 
-- The tmp **‘/tmp’** directory: contains temporary files created by system and users
-
-- The home **‘/home’** directory: store files of users
-
-- The usr **‘/usr’** directory: contains binaries, libraries and source code for programs of user space
-
-- /usr/bin contains binary files for user programs.
-
-- /usr/sbin contains binary files for system administrators.
-
-- /usr/lib contains libraries for /usr/bin and /usr/sbin.
-
-- /usr/local contains users programs that installed from source.
-
-- The etc **‘/etc’** directory: contain core system files like startup and shutdown shell scripts
-
-- The var **‘/var’** directory: Content of the files that are expected to grow can be found under this directory.
-
-- The sbin **‘/sbin’** directory: contains binary executable and linux commands
-
-## Navigating through the filesystem
-
-**(~)** symbol stands for your home directory
-
-**cd** (change directory)
-
-**pwd** (print working dircetory)
-
-**ls** (list)
-
-The **‘.’** link refers to the directory itself.
-
-The **‘..’** link refers to the directory before it (parent directory)
-
-## Relative and absolute paths
-
-**absolute Path**:The total path leading to the directory.
-
-**relative Path**: The path relative to the working directory.
+- **Dentry** contains the file name and file path.
 
 ## Managing Directories and Files
 
@@ -76,6 +36,14 @@ The **‘..’** link refers to the directory before it (parent directory)
 2. **Directory(d)** a folder containing other files or folders
 
 3. **Special**: Block file(b): hardware files (Like some files under /dev/), symbilic link(l) File pointing to another file (shortcut).
+
+## Relative and absolute paths
+
+**absolute Path**:The total path leading to the directory.
+
+**relative Path**: The path relative to the working directory.
+
+
 
 ## Creating Directories
 
@@ -212,4 +180,36 @@ to search in files
 
 $grep string-to-match file
 
-### task
+## Links
+
+### Hard links
+
+- Hard links are appliable for files only not directories (there was a security hole with directories). 
+
+``` bash
+ln  target-file link-file #(create link-file as a hard link to target-file)
+ls -i #(list inode of files in current location)
+```
+- hard link creates a new dentry with new name and path but it point to same inode and same data blocks
+
+- Copying file creates new files with new dentry, inode and data blocks
+
+- Renaming a file changes the name in dentry
+
+- Moving a file changes name and path in dentry (if they are in same partition)
+
+
+
+### Symbolic links
+
+symbolic are like new file that has a mode of link, and its data block will contain the file that is wanted to create a link to it.
+
+``` bash
+ln -s  target-file link-file #(create link-file as a hard link to target-file)
+ls -l #(look at the symbolic link and note that the file type is 'l' )
+```
+## task
+
+get the flags from level 1 to level 8
+
+https://overthewire.org/wargames/bandit/bandit0.html
