@@ -19,9 +19,9 @@ most important software that runs on a computer, it manges computer's memory, pr
 
 ## Open Source and Linux History
 
-1- (1969) Ken Thompson found himself creating and playing computer games on the company’s expensive, decided to port this games 
+1- (1969) Ken Thompson found himself creating and playing computer games on the company’s expensive, decided to port this games 
 
-2- (1980) many versions of unix was released and almost all of software was restricted. 
+2- (1980) many versions of unix was released and almost all of software was restricted. 
 
 3- (1983) The project to develop the GNU system is called the  “GNU Project.” 
 
@@ -29,7 +29,7 @@ most important software that runs on a computer, it manges computer's memory, pr
 
 5- (1991) Then Linux, a Unix-like kernel, was developed by Linus Torvalds
 
-6-  Combining Linux with the almost-complete GNU system resulted in a complete operating system: the GNU/Linux system
+6-  Combining Linux with the almost-complete GNU system resulted in a complete operating system: the GNU/Linux system
 
 
 ## Linux Distribution Families
