@@ -5,4 +5,4 @@
 - what's SVC ? and its types
 - git tool
 - what's the relation between git and github  
-- applicate with the a project
+- applicate with a project
