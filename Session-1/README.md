@@ -141,6 +141,10 @@ The **‘..’** link refers to the directory before it (parent directory)
 ## Task
 Installation of Kali linux on virtual machine
 
-download VMware : https://customerconnect.vmware.com/en/downloads/details?downloadGroup=WKST-PLAYER-1621&productId=1039&rPId=77292
+### enable virtualization for windows : https://mashtips.com/enable-virtualization-windows-10/
 
-download kali iso for virtual machine : https://www.kali.org/get-kali/#kali-virtual-machines
+### download VMware : https://customerconnect.vmware.com/en/downloads/details?downloadGroup=WKST-PLAYER-1621&productId=1039&rPId=77292
+
+### download kali iso for virtual machine : https://www.kali.org/get-kali/#kali-virtual-machines
+
+
