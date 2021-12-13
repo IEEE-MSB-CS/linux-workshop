@@ -141,7 +141,9 @@ The **‘..’** link refers to the directory before it (parent directory)
 ## Task
 Installation of Kali linux on virtual machine
 
-### enable virtualization for windows : https://mashtips.com/enable-virtualization-windows-10/
+### enable virtualization for windows : https://youtu.be/ZDeje9wgDp4
+
+https://mashtips.com/enable-virtualization-windows-10/
 
 ### download VMware : https://customerconnect.vmware.com/en/downloads/details?downloadGroup=WKST-PLAYER-1621&productId=1039&rPId=77292
 
