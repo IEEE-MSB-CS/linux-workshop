@@ -902,3 +902,7 @@ for i in {1..254}; do ping -c 192.168.1.$i | grep "bytes from" | cut -d " " -f 4
 ### Task1
 
 Organize a directory
+
+### Task2 
+Write a script that runs sublit3r, and some othe tool to extract the target information from it and organize the output
+ 
