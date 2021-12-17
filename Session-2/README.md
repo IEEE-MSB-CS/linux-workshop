@@ -4,28 +4,7 @@ Tour guide to the Linux System.
 
 ## Filesystems
 
-### What is a filesystem?
 
-filesystems are simply different ways of organizing and storing
-files on a hard drive, flash drive, or any other storage device.
-
-### Types of filesystem
-
-- **FAT32**: support individual files up to 4GB, and vollumes up to 2TB, doesnt suppor file permission,
-  file system corruption can happen much more easily
-
-- **NTFS**:the modern file system Windows likes to use by default, supports file permissions for security,
-  a change journal that can help quickly recover errors if your computer crashes, shadow copies for backups,
-  encryption, disk quota limits, hard links, No realistic file size or partition size limits.
-
-- **Ext4**: a standard root/tree file system, with a boot sector, partition table, and like the Unix File System,
-  uses inodes (index nodes) to describe files and objects
-
-- file-system in linux is divided to **Meta-data** and **data**. 
-
-- **Meta-data** is stored in **inode** and **dentry**. **Inode** has a unique number for each file. **Inode** contains information about the file size, owner, permissions, dat of creation and pointers to data blocks. 
-
-- **Dentry** contains the file name and file path.
 
 ## Managing Directories and Files
 
@@ -51,12 +30,28 @@ files on a hard drive, flash drive, or any other storage device.
 mkdir dirname
 ```
 
-## Creating Files
+## Creating Files and Directories
 
 ```bash
-touch file1.txt
-> file2.txt
+touch file1.txt   #(creates new empty file1.txt file)
+> file2.txt      #(creates file2.txt and active the stream to type in it, use ctrl+c to stop the stream)
+nano <filename>  #(create a new file and edit, edit this file if existed) 
+mkdir <dirname>  #(creates new directory)
+mkdir <dir1> <dir2> <dir3> #(can create more than one new directory)
+mkdir /tmp/test-dir #(create dir not in the same working directory but in the provided path)
+mkdir -p <dir1/dir2/dir3> #(creates the necessary directories for this path)
 ```
+## Rules for naming file names
+
+1- The file names can be up to 255 characters
+
+2- use Uppercase or lowercase letters (case sensitive)
+
+3- use Digits
+
+4- use Special characters, such as: +, -, _, .
+
+5- Try to avoid non printable and following characters in filenames:/, >, <, ?, “, ‘, blank space
 
 ## Renaming and Moving Files
 
@@ -74,6 +69,10 @@ mv old-filename /new/path/new-filename #(moving and renaming)
 
 ```bash
 cp file file_clone #(coping file)
+
+cp file1 file2 file3 <path> #(coping many files)
+
+cp -i file.txt file_backup.txt #(to get a confirmation before overwriting the files)
 
 cp -r dir new-dir #(coping directories)
 ```
@@ -156,9 +155,15 @@ It will search the short manual page descriptions for "hey" keyword and display 
 
 Nano is a simple, modeless command-line text editor.
 
+use the following commands to install nano
+
 $sudo apt-get update
 
 $sudo apt install nano
+
+```bash
+nano newfile #(creates new file and display a screen to write and edit in it, use ctrl+x to exit)
+```
 
 ## useful commands
 
@@ -208,8 +213,32 @@ symbolic are like new file that has a mode of link, and its data block will cont
 ln -s  target-file link-file #(create link-file as a hard link to target-file)
 ls -l #(look at the symbolic link and note that the file type is 'l' )
 ```
+
+### What is a filesystem?
+
+filesystems are simply different ways of organizing and storing
+files on a hard drive, flash drive, or any other storage device.
+
+### Types of filesystem
+
+- **FAT32**: support individual files up to 4GB, and vollumes up to 2TB, doesnt suppor file permission,
+  file system corruption can happen much more easily
+
+- **NTFS**:the modern file system Windows likes to use by default, supports file permissions for security,
+  a change journal that can help quickly recover errors if your computer crashes, shadow copies for backups,
+  encryption, disk quota limits, hard links, No realistic file size or partition size limits.
+
+- **Ext4**: a standard root/tree file system, with a boot sector, partition table, and like the Unix File System,
+  uses inodes (index nodes) to describe files and objects
+
+- file-system in linux is divided to **Meta-data** and **data**. 
+
+- **Meta-data** is stored in **inode** and **dentry**. **Inode** has a unique number for each file. **Inode** contains information about the file size, owner, permissions, dat of creation and pointers to data blocks. 
+
+- **Dentry** contains the file name and file path.
+
 ## task
 
-get the flags from level 1 to level 8
+get the flags from level 1 to level 10
 
 https://overthewire.org/wargames/bandit/bandit0.html
